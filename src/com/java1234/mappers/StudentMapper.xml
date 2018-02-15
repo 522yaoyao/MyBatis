@@ -5,7 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.java1234.mappers.StudentMapper">
 
 	<insert id="add" parameterType="Student"  >
-		insert into t_student values(null,#{name},#{age})
+		insert into t_student values(#{id},#{name},#{age})
 	</insert>
-
+	
+	<update id="update"  parameterType="Student" >
+	    update t_student set name=#{name}, id=#{id} where age=#{age}
+    </update>
+    
+	<delete id="delete"   parameterType="Student" >
+	    delete from t_student where name=#{name}
+	</delete>
+	
+	<select id="getById"    resultType="Student">
+	   select * from t_student where  id=#{id}
+	</select>
 </mapper> 
