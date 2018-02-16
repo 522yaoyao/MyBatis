@@ -15,7 +15,7 @@ public class StudentTest {
 	public static void main(String[] args) {
 		SqlSession sqlSession=SqlSessionFactoryUtil.openSession();
 		logger.info("更新操作");
-	    int i=sqlSession.update("update",new Student(5,"张三",11));
+	    int i=sqlSession.insert("add",new Student(5,"张三",11));
 	    sqlSession.commit();
 	    System.out.println(i+"dddd");
 	}

@@ -1,6 +1,6 @@
 package junit;
 
-import static org.junit.Assert.*;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
@@ -37,7 +37,7 @@ public class JunitTest {
 	@Test
 	public void testAdd() {
 	    logger.info("添加操作");	
-	    sqlSession.insert("add",new Student(3,"haha",18));
+	    sqlSession.insert("add",new Student(3,"haha",8));
     	sqlSession.commit();
    }
 	
@@ -51,15 +51,24 @@ public class JunitTest {
 	@Test
 	public void testDelete(){
 		logger.info("删除操作");
-	    int i=sqlSession.delete("delete",new Student(5,"王五",11));
+	    int i=sqlSession.delete("delete","王五");
 	    sqlSession.commit();
 	 }
 	
 	@Test
 	public void testGetById(){
 		logger.info("查询操作");
-	    Student student=sqlSession.selectOne("getById",new Student(3,"王五",11));
+	    Student student=sqlSession.selectOne("getById",8);
 	    logger.info(student.getName());
 	 }
+	
+	@Test
+	public void testGetAllStudent(){
+		logger.info("查询操作");
+	    List<Student> studentList=sqlSession.selectList("getAllStudent");
+	    for(Student stu: studentList)
+	    logger.info(stu.getName());
+	 }
+	
 	
 }

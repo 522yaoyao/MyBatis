@@ -4,6 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.java1234.mappers.StudentMapper">
 
+    <resultMap type="Student" id="StudentResult">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+		<result property="age" column="age"/>
+    </resultMap>
 	<insert id="add" parameterType="Student"  >
 		insert into t_student values(#{id},#{name},#{age})
 	</insert>
@@ -12,11 +17,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    update t_student set name=#{name}, id=#{id} where age=#{age}
     </update>
     
-	<delete id="delete"   parameterType="Student" >
+	<delete id="delete"   parameterType="String" >
 	    delete from t_student where name=#{name}
 	</delete>
 	
-	<select id="getById"    resultType="Student">
-	   select * from t_student where  id=#{id}
+	<select id="getById"   parameterType="int"    resultType="Student">
+	   select * from t_student where  age=#{id}
+	</select>
+	
+	<select id="getAllStudent"    resultMap="StudentResult">
+	   select * from t_student 
 	</select>
 </mapper> 
