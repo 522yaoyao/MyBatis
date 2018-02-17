@@ -15,4 +15,6 @@ public interface StudentMapper {
 	public Student getById(int id);
 	
 	public List<Student> getAllStudent();
+	
+	public Student getAById(int addressId);
 }

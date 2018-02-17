@@ -11,9 +11,9 @@ import org.junit.Test;
 import com.java1234.model.Student;
 import com.java1234.util.SqlSessionFactoryUtil;
 
-public class JunitTest {
+public class JunitTest2 {
 	
-	private static Logger logger=Logger.getLogger(JunitTest.class);
+	private static Logger logger=Logger.getLogger(JunitTest2.class);
 	SqlSession sqlSession=null;
 
 	/**
@@ -35,39 +35,18 @@ public class JunitTest {
 	}
 
 	@Test
-	public void testAdd() {
-	    logger.info("添加操作");	
-	    sqlSession.insert("add",new Student(3,"haha",8));
-    	sqlSession.commit();
+	public void testByAddress() {
+	    logger.info("查询地址操作");	
+	    Student stu=sqlSession.selectOne("getAById",1);
+	    stu.toString();
+    	//sqlSession.commit();
    }
-	
-	@Test
-	public void testUpdate(){
-		logger.info("更新操作");
-	    int i=sqlSession.update("update",new Student(5,"张三",11));
-	    sqlSession.commit();
-	  }
-   
-	@Test
-	public void testDelete(){
-		logger.info("删除操作");
-	    int i=sqlSession.delete("delete","王五");
-	    sqlSession.commit();
-	 }
 	
 	@Test
 	public void testGetById(){
 		logger.info("查询操作");
 	    Student student=sqlSession.selectOne("getById",17);
 	    logger.info(student.getName());
-	 }
-	
-	@Test
-	public void testGetAllStudent(){
-		logger.info("查询操作");
-	    List<Student> studentList=sqlSession.selectList("getAllStudent");
-	    for(Student stu: studentList)
-	    logger.info(stu.getName());
 	 }
 	
 	

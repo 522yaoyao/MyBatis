@@ -5,9 +5,16 @@ public class Student {
 	private Integer id;
 	private String name;
 	private Integer age;
+	private Address address;//根据外键获取对象
 	
-	
-	
+	public Address getAddress() {
+            return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -47,5 +54,9 @@ public class Student {
 		this.age = age;
 	}
 	
+	public String toString() {
+		System.out.println( "Student [id=" + id + ", name=" + name + ", age=" + age + ", address=" + address.toString() + "]");
+		return null;
+	}
 	
 }

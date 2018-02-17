@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<properties resource="jdbc.properties"/>
 	<typeAliases>
-		<typeAlias alias="Student" type="com.java1234.model.Student"/>
+		<package name="com.java1234.model"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/java1234/mappers/StudentMapper.xml" />
+<!-- 		<mapper resource="com/java1234/mappers/StudentMapper.xml" /> -->
+           <package name="com.java1234.mappers"/>
 	</mappers>
 </configuration>
