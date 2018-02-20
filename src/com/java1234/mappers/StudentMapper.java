@@ -17,4 +17,6 @@ public interface StudentMapper {
 	public List<Student> getAllStudent();
 	
 	public Student getAById(int addressId);
+	
+	public Student findByGradeId(int id);
 }

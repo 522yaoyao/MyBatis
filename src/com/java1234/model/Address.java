@@ -8,14 +8,14 @@ public class Address {
 	private String qu;
 
 
-//构造有参的构造方法会报错
-//	public Address(int id, String sheng, String shi, String qu) {
-//		super();
-//		this.id = id;
-//		this.sheng = sheng;
-//		this.shi = shi;
-//		this.qu = qu;
-//	}
+
+	public Address(int id, String sheng, String shi, String qu) {
+		super();
+		this.id = id;
+		this.sheng = sheng;
+		this.shi = shi;
+		this.qu = qu;
+	}
 
 	public int getId() {
 		return id;

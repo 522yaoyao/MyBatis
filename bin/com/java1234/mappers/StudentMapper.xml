@@ -49,7 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<association property="address" column="addressId" select="com.java1234.mappers.AddressMapper.getAddrById"></association>
 	 </resultMap>  
     
-    
+      <select id="findByGradeId" resultMap="StudentResult" parameterType="int">
+		select * from t_student  where gradeId=#{id}
+	</select>
     
     <select id="getAById" resultMap="StudentResult" parameterType="int">
 		select * from t_student t1,t_address t2 where t1.addressId=t2.id and t1.id=#{id}
@@ -68,7 +70,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="getById"   parameterType="int"    resultType="Student">
-	   select * from t_student where  age=#{id}
+	   select * from t_student where  id=#{id}
 	</select>
 	
 	<select id="getAllStudent"    resultMap="StudentResult">

@@ -8,13 +8,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.java1234.mappers.GradeMapper;
+import com.java1234.model.Grade;
 import com.java1234.model.Student;
 import com.java1234.util.SqlSessionFactoryUtil;
 
-public class JunitTest2 {
+public class GradeTest {
 	
-	private static Logger logger=Logger.getLogger(JunitTest2.class);
+	private static Logger logger=Logger.getLogger(GradeTest.class);
 	SqlSession sqlSession=null;
+	private GradeMapper gradeMapper=null;
 
 	/**
 	 * 测试方法前调用
@@ -23,6 +26,7 @@ public class JunitTest2 {
 	@Before
 	public void setUp() throws Exception {
 		sqlSession=SqlSessionFactoryUtil.openSession();
+		gradeMapper=sqlSession.getMapper(GradeMapper.class);
 		}
 
 	/**
@@ -35,19 +39,10 @@ public class JunitTest2 {
 	}
 
 	@Test
-	public void testByAddress() {
-	    logger.info("查询地址操作");	
-	    Student stu=sqlSession.selectOne("getAById",1);
-	    stu.toString();
-    	//sqlSession.commit();
+	public void testgetGrade() {
+	    logger.info("查询操作");	
+	    List<Grade> stu=gradeMapper.getGradeById(1);
+	    for(Grade s:stu) System.out.println(s.toString());
+    	sqlSession.commit();
    }
-	
-	@Test
-	public void testGetById(){
-		logger.info("查询操作");
-	    Student student=sqlSession.selectOne("getById",1);
-	    logger.info(student.getName());
-	 }
-	
-	
 }
